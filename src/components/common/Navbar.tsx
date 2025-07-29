@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
     { href: "/", label: "Beranda" },
-    { href: "/tentang", label: "Tentang Kami" },
+    { href: "/#tentang-kami", label: "Tentang Kami" },
     { href: "/proyek", label: "Proyek" },
     { href: "/layanan", label: "Layanan" },
 ];
@@ -56,7 +56,7 @@ export function Navbar() {
                     className={cn(
                         "flex h-16 items-center justify-between transition-all duration-300 ease-in-out",
                         scrolled
-                            ? "rounded-full bg-background/100 backdrop-blur-xl px-6 shadow-lg shadow-black/5"
+                            ? "rounded-full bg-background/100 backdrop-blur-xl px-4 shadow-lg shadow-black/5"
                             : "rounded-none bg-transparent px-4 sm:px-6 lg:px-8"
                     )}
                 >
