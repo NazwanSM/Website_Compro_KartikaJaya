@@ -62,13 +62,13 @@ export function AboutUs() {
             </motion.h2>
             <motion.p
                 variants={itemVariants}
-                className="mt-4 text-muted-foreground text-sm text-justify mr-10"
+                className="mt-4 text-muted-foreground text-sm text-justify"
             >
                 PT Kartika Jaya Kontruksindo merupakan perusahaan yang bergerak di bidang jasa konstruksi serta supplier material dan alat bidang teknik. Perusahaan ini didirikan pada tanggal 15 Maret 2016. Tujuan didirikannya perusahaan ini adalah mewadahi mimpi dan usaha para pengurusnya dalam membantu pembangunan negara di bidang infrastruktur. PT Kartika Jaya Kontruksindo bekerja sama dengan Badan Usaha Milik Negara (BUMN) dan Perusahaan Swasta Nasional dalam melakukan pekerjaannya. Sampai saat ini PT Kartika Jaya Kontruksindo selalu berupaya untuk memberikan usaha terbaik di setiap pekerjaan yang sedang dikerjakan.
             </motion.p>
             <motion.div
                 variants={itemVariants}
-                className="mt-8 grid grid-cols-1 gap-6 mr-10 sm:grid-cols-2"
+                className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2"
             >
                 {/* Visi dan Misi */}
                 <div>

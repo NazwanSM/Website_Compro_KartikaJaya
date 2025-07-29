@@ -4,7 +4,6 @@
 import Image from "next/image";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
-import { Quote } from "lucide-react";
 
 export function DirectorSpeech() {
     const ref = useRef(null);

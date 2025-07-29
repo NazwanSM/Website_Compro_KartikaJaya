@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PT. Kartika Jaya Kontruksindo", // Ganti judulnya
-  description: "Perusahaan Jasa Konstruksi dan Supplier Material Teknik", // Ganti deskripsinya
+  title: "Kartika Jaya Kontruksindo",
+  description: "Perusahaan Jasa Kontruksi dan Supplier Material Teknik", // Ganti deskripsinya
 };
 
 export default function RootLayout({
@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-r from-slate-800 to-slate-950` }
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-white` }
       >
-        <SmoothScroll>{children}</SmoothScroll> {/* Bungkus children */}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

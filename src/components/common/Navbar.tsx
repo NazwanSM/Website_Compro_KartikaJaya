@@ -4,9 +4,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { Drawer } from "vaul";
 
 const navLinks = [
     { href: "/", label: "Beranda" },
@@ -16,7 +17,6 @@ const navLinks = [
 ];
 
 export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     // Efek untuk mendeteksi scroll
@@ -56,14 +56,14 @@ export function Navbar() {
                     className={cn(
                         "flex h-16 items-center justify-between transition-all duration-300 ease-in-out",
                         scrolled
-                            ? "rounded-full bg-background/100 backdrop-blur-xl px-4 shadow-lg shadow-black/5"
+                            ? "bg-base-white backdrop-blur-xl px-4 shadow-lg shadow-black/5 sm:rounded-none md:rounded-full lg:rounded-full"
                             : "rounded-none bg-transparent px-4 sm:px-6 lg:px-8"
                     )}
                 >
                     {/* Konten Navbar Anda (Link, Logo, Nav, Button) */}
                     <Link href="/" className="flex items-center gap-2">
-                        <Image className={cn(scrolled ? "bg-base-white py-1 rounded-full"  : "bg-base-white py-1 rounded-full")} src="/icon/kartika-jaya.png" alt="Logo KJK" width={64} height={64} />
-                        <span className= {cn("transition-colors duration-100", scrolled ? "font-semibold text-lg text-base-black" : "font-semibold text-base-white text-md")}>Kartika Jaya Konstruksindo</span>
+                        <Image className={cn(scrolled ? "bg-base-white py-1 rounded-full "  : "bg-base-white py-1 rounded-full")} src="/icon/kartika-jaya.png" alt="Logo KJK" width={64} height={64} />
+                        <span className= {cn("transition-colors duration-100 ml-0.75", scrolled ? "font-semibold text-base-black sm:text-md md:text-lg lg:text-lg" : "font-semibold text-base-white text-md")}>Kartika Jaya Kontruksindo</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -77,36 +77,42 @@ export function Navbar() {
                                 {link.label}
                             </Link>
                         ))}
-                        <Button className="bg-base-black">Hubungi Kami</Button>
+                        <Button className="bg-base-black cursor-pointer">Hubungi Kami</Button>
                     </nav>
 
                     {/* Mobile Navigation Toggle */}
                     <div className="md:hidden">
-                        <Button variant="ghost" size="default" onClick={() => setIsOpen(!isOpen)}>
-                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                        </Button>
+                        <Drawer.Root direction="right">
+                            <Drawer.Trigger asChild>
+                                <Button variant="ghost">
+                                    <Menu className="h-6 w-6" />
+                                </Button>
+                            </Drawer.Trigger>
+                            <Drawer.Portal>
+                                <Drawer.Overlay className="fixed inset-0 bg-black/40" />
+                                <Drawer.Content className="fixed bottom-0 right-0 mt-24 flex h-[100%] w-[80%] flex-col rounded-l-lg bg-base-white">
+                                    <div className="flex-1 rounded-l-lg bg-base-white p-4">
+                                        <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-muted" />
+                                        <nav className="flex flex-col items-center gap-4">
+                                            {navLinks.map((link) => (
+                                                <Drawer.Close asChild key={link.href}>
+                                                    <Link
+                                                        href={link.href}
+                                                        className="text-lg font-medium text-foreground hover:text-primary w-full text-center py-3"
+                                                    >
+                                                        {link.label}
+                                                    </Link>
+                                                </Drawer.Close>
+                                            ))}
+                                            <Button className="w-full mt-4">Hubungi Kami</Button>
+                                        </nav>
+                                    </div>
+                                </Drawer.Content>
+                            </Drawer.Portal>
+                        </Drawer.Root>
                     </div>
                 </div>
             </div>
-        
-        {/* Mobile Menu */}
-        {isOpen && (
-            <div className="md:hidden bg-background border-t border-border mt-0.5">
-            <nav className="flex flex-col items-center gap-4 p-4">
-                {navLinks.map((link) => (
-                <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-base font-medium text-foreground hover:text-primary w-full text-center py-2"
-                    onClick={() => setIsOpen(false)}
-                >
-                    {link.label}
-                </Link>
-                ))}
-                <Button className="w-full mt-2">Hubungi Kami</Button>
-            </nav>
-            </div>
-        )}
         </header>
     );
 }
