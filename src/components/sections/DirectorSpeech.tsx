@@ -32,7 +32,7 @@ export function DirectorSpeech() {
     };
 
     return (
-        <section id="sambutan-direktur" ref={ref} className="w-full bg-slate-900 py-20 sm:py-32 overflow-hidden">
+        <section id="sambutan-direktur" ref={ref} className="w-full bg-slate-900 py-10 sm:py-32 overflow-hidden rounded-xl">
         <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -41,18 +41,12 @@ export function DirectorSpeech() {
         >
             {/* Kolom Teks (Kiri) */}
             <div className="flex flex-col justify-center order-2 md:order-1">
-            <motion.p 
+            <motion.h3 
                 variants={itemVariants} 
-                className="text-sm font-semibold uppercase tracking-wider text-base-white"
+                className="text-2xl font-semibold uppercase tracking-wider text-base-white"
             >
                 Sambutan Direktur Utama
-            </motion.p>
-            <motion.h2
-                variants={itemVariants}
-                className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-base-white"
-            >
-                Halooooo
-            </motion.h2>
+            </motion.h3>
             <motion.div variants={itemVariants} className="mt-6">
                 <p className="text-sm text-base-white/80 text-justify">
                 Puji syukur kami panjatkan ke hadirat Tuhan Yang Maha Esa atas segala limpahan rahmat dan karunia-Nya, sehingga PT Kartika Jaya Kontruksindo terus berkembang dan berkontribusi dalam pembangunan infrastruktur nasional sejak didirikan pada tahun 2016.

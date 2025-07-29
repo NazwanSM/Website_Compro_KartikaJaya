@@ -10,10 +10,10 @@ import { cn } from "@/lib/utils";
 import { Drawer } from "vaul";
 
 const navLinks = [
-    { href: "/", label: "Beranda" },
-    { href: "/#tentang-kami", label: "Tentang Kami" },
-    { href: "/proyek", label: "Proyek" },
-    { href: "/layanan", label: "Layanan" },
+    { href: "/", label: "HOME" },
+    { href: "/#tentang-kami", label: "TENTANG KAMI" },
+    { href: "/proyek", label: "PROYEK" },
+    { href: "/layanan", label: "LAYANAN" },
 ];
 
 export function Navbar() {
@@ -63,7 +63,7 @@ export function Navbar() {
                     {/* Konten Navbar Anda (Link, Logo, Nav, Button) */}
                     <Link href="/" className="flex items-center gap-2">
                         <Image className={cn(scrolled ? "bg-base-white py-1 rounded-full "  : "bg-base-white py-1 rounded-full")} src="/icon/kartika-jaya.png" alt="Logo KJK" width={64} height={64} />
-                        <span className= {cn("transition-colors duration-100 ml-0.75", scrolled ? "font-semibold text-base-black sm:text-md md:text-lg lg:text-lg" : "font-semibold text-base-white text-md")}>Kartika Jaya Kontruksindo</span>
+                        <span className= {cn("transition-colors duration-100 ml-0.75", scrolled ? "font-semibold text-base-black sm:text-md md:text-lg lg:text-lg" : "font-semibold text-base-white text-md")}>KARTIKA JAYA KONSTRUKSINDO</span>
                     </Link>
 
                     {/* Desktop Navigation */}

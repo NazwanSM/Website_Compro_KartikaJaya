@@ -26,7 +26,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             >
-            Membangun Negeri
+            PT KARTIKA JAYA KONTRUKSINDO
             </motion.h1>
             <motion.p
             initial={{ opacity: 0, y: 20 }}

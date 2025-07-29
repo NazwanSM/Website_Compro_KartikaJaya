@@ -56,9 +56,9 @@ export function AboutUs() {
             <div className="flex flex-col justify-center">
             <motion.h2
                 variants={itemVariants}
-                className="text-3xl font-bold tracking-tight text-base-black sm:text-4xl"
+                className="text-2xl font-semibold uppercase tracking-wider text-base-black"
             >
-                Sejarah Perusahaan
+                SEJARAH PERUSAHAAN
             </motion.h2>
             <motion.p
                 variants={itemVariants}
@@ -72,13 +72,13 @@ export function AboutUs() {
             >
                 {/* Visi dan Misi */}
                 <div>
-                <h3 className="text-lg font-bold text-base-black">Visi</h3>
+                <h3 className="text-lg font-semibold uppercase tracking-wider text-base-black">Visi</h3>
                 <p className="mt-2 text-sm text-muted-foreground text-justify">
                     Menjadi perusahaan di bidang konstruksi yang bertanggung jawab, disiplin, terpercaya, dan dapat diandalkan.
                 </p>
                 </div>
                 <div>
-                <h3 className="text-lg font-bold text-base-black">Misi</h3>
+                <h3 className="text-lg font-semibold uppercase tracking-wider text-base-black">Misi</h3>
                 <ul className="mt-2 list-disc space-y-1 text-sm text-muted-foreground text-justify ml-4">
                     <li>Berpartisipasi dalam pembangunan nasional maupun internasional melalui jasa konstruksi.</li>
                     <li>Menyediakan jasa konstruksi yang dapat memberikan nilai tambah bagi main kontraktor maupun owner.</li>
