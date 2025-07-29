@@ -62,8 +62,8 @@ export function Navbar() {
                 >
                     {/* Konten Navbar Anda (Link, Logo, Nav, Button) */}
                     <Link href="/" className="flex items-center gap-2">
-                        <Image className={cn(scrolled ? "bg-white py-1 rounded-full"  : "bg-white py-1 rounded-full")} src="/icon/kartika-jaya.png" alt="Logo KJK" width={64} height={64} />
-                        <span className= {cn("transition-colors duration-100", scrolled ? "font-semibold text-lg" : "font-semibold text-white text-md")}>Kartika Jaya Konstruksindo</span>
+                        <Image className={cn(scrolled ? "bg-base-white py-1 rounded-full"  : "bg-base-white py-1 rounded-full")} src="/icon/kartika-jaya.png" alt="Logo KJK" width={64} height={64} />
+                        <span className= {cn("transition-colors duration-100", scrolled ? "font-semibold text-lg text-base-black" : "font-semibold text-base-white text-md")}>Kartika Jaya Konstruksindo</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -72,12 +72,12 @@ export function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={cn("transition-colors duration-300", scrolled ? "text-sm font-medium text-muted-foreground transition-colors hover:text-primary" : "text-sm font-medium text-white transition-colors hover:text-primary")}
+                                className={cn("transition-colors duration-300", scrolled ? "text-sm font-medium text-muted-foreground transition-colors hover:text-primary" : "text-sm font-medium text-base-white transition-colors hover:text-primary")}
                             >
                                 {link.label}
                             </Link>
                         ))}
-                        <Button>Hubungi Kami</Button>
+                        <Button className="bg-base-black">Hubungi Kami</Button>
                     </nav>
 
                     {/* Mobile Navigation Toggle */}

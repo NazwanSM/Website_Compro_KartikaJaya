@@ -19,7 +19,7 @@ export function Hero() {
             sizes="100vw"
         />
 
-        <div className="relative z-10 text-center text-white px-4">
+        <div className="relative z-10 text-center text-base-white px-4">
             <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

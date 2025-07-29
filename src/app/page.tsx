@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/common/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { AboutUs } from "@/components/sections/AboutUs";
+import { DirectorSpeech } from "@/components/sections/DirectorSpeech";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-between">
         <Hero />
         <AboutUs />
+        <DirectorSpeech />
         {/* Di sini Anda bisa menambahkan seksi-seksi lain nanti */}
         {/* contoh: <LayananSection />, <ProyekUnggulanSection />, dll. */}
         <div className="container mx-auto py-20 text-center">
