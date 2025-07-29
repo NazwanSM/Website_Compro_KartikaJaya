@@ -90,7 +90,7 @@ export function Navbar() {
                             </Drawer.Trigger>
                             <Drawer.Portal>
                                 <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-                                <Drawer.Content className="fixed bottom-0 right-0 mt-24 flex h-[100%] w-[80%] flex-col rounded-l-lg bg-base-white">
+                                <Drawer.Content className="fixed bottom-2 right-0 mt-24 flex h-[98%] w-[80%] flex-col rounded-l-lg bg-base-white">
                                     <div className="flex-1 rounded-l-lg bg-base-white p-4">
                                         <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-muted" />
                                         <nav className="flex flex-col items-center gap-4">
