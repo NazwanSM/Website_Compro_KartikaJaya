@@ -11,7 +11,7 @@ export function OrganizationalStructure() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section id="struktur-organisasi" ref={ref} className="w-full bg-base-white dark:bg-card py-12 sm:py-16">
+        <section id="struktur-organisasi" ref={ref} className="w-full bg-base-white dark:bg-card py-20 sm:py-32">
         <div className="container mx-auto max-w-7xl px-4 lg:px-8">
             <motion.div
             initial={{ opacity: 0, y: 20 }}
