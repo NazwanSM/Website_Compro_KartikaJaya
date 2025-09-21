@@ -2,9 +2,8 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { InteractiveHoverButton } from "../ui/interactive-hover-button";
 
 export function Hero() {
     return (
@@ -43,9 +42,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="mt-8"
             >
-            <Button size="lg">
-                Lihat Proyek Kami <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <InteractiveHoverButton text="Lihat Proyek Kami" href="/#wilayah-kerja"/>
             </motion.div>
         </div>
         </section>
