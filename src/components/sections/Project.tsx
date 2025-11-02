@@ -2,7 +2,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { unifiedProjectData } from "@/data/projects";
 
@@ -37,6 +37,18 @@ export const ProjectsSection = () => {
     const [carouselApi, setCarouselApi] = useState<CarouselApi>();
     const [currentSlide, setCurrentSlide] = useState(0);
     const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+    // Memoize project data untuk menghindari re-render
+    const projects = useMemo(() => unifiedProjectData, []);
+
+    // Optimize handler dengan useCallback
+    const handleProjectClick = useCallback((project: ProjectItem) => {
+        setSelectedProject(project);
+    }, []);
+
+    const handleCloseDialog = useCallback(() => {
+        setSelectedProject(null);
+    }, []);
 
     useEffect(() => {
         if (!carouselApi) return;
@@ -81,11 +93,11 @@ export const ProjectsSection = () => {
             <div className="w-full">
             <Carousel setApi={setCarouselApi} opts={{ align: "start" }}>
                 <CarouselContent className="ml-0 2xl:ml-[max(8rem,calc(50vw-700px))] 2xl:mr-[max(0rem,calc(50vw-700px))]">
-                {unifiedProjectData.map((item) => (
+                {projects.map((item) => (
                     <CarouselItem key={item.id} className="max-w-[320px] pl-4 sm:pl-6 lg:max-w-[380px]">
                     <div 
-                        className="group rounded-xl block cursor-pointer"
-                        onClick={() => setSelectedProject(item)}
+                        className="group rounded-xl block cursor-pointer will-change-transform"
+                        onClick={() => handleProjectClick(item)}
                     >
                         <div className="group relative h-full min-h-[28rem] overflow-hidden rounded-xl">
                         <Image
@@ -114,7 +126,7 @@ export const ProjectsSection = () => {
                 </CarouselContent>
             </Carousel>
             <div className="mt-8 flex justify-center gap-2">
-                {unifiedProjectData.map((_, index) => (
+                {projects.map((_, index) => (
                 <button
                     key={index}
                     className={`h-2 w-2 rounded-full transition-colors ${currentSlide === index ? "bg-white" : "bg-white/30"}`}
@@ -127,8 +139,8 @@ export const ProjectsSection = () => {
         </section>
 
         {/* Komponen Dialog untuk Popup */}
-        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="sm:max-w-[600px] bg-white dark:bg-slate-950 flex flex-col max-h-[90vh] p-0">
+        <Dialog open={!!selectedProject} onOpenChange={handleCloseDialog}>
+        <DialogContent className="sm:max-w-[600px] bg-white dark:bg-slate-950 flex flex-col max-h-[90vh] p-0 overflow-hidden">
             {selectedProject && (
                 <>
                 <div className="relative w-full h-64 flex-shrink-0">
@@ -141,7 +153,26 @@ export const ProjectsSection = () => {
                     </DialogDescription>
                 </DialogHeader>
                 {/* Area Konten yang Bisa di-scroll */}
-                <div className="px-6 pb-6 overflow-y-auto">
+                <div 
+                    className="px-6 pb-6 overflow-y-auto overscroll-contain flex-1"
+                    onWheel={(e) => {
+                        // Prevent scroll propagation to background
+                        e.stopPropagation();
+                        
+                        const element = e.currentTarget;
+                        const isScrollable = element.scrollHeight > element.clientHeight;
+                        
+                        if (!isScrollable) return;
+                        
+                        const isAtTop = element.scrollTop === 0;
+                        const isAtBottom = element.scrollTop + element.clientHeight >= element.scrollHeight - 1;
+                        
+                        // Prevent scroll if trying to scroll beyond boundaries
+                        if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+                            e.preventDefault();
+                        }
+                    }}
+                >
                     <h4 className="font-semibold mb-2">Detail Proyek:</h4>
                     <p className="text-sm text-muted-foreground mb-4">{selectedProject.description}</p>
                     <h4 className="font-semibold mb-2">Lingkup Pekerjaan:</h4>

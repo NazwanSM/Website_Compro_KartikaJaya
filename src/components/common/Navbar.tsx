@@ -56,13 +56,8 @@ const projectsComponents: { title: string; href: string; description: string }[]
     },
     {
         title: "Proyek Selesai",
-        href: "/#proyek-selesai",
+        href: "/#proyek",
         description: "Galeri proyek yang telah berhasil kami selesaikan.",
-    },
-    {
-        title: "Proyek Masa Depan",
-        href: "/#proyek-masa-depan",
-        description: "Rencana dan visi untuk proyek-proyek mendatang.",
     },
 ];
 
