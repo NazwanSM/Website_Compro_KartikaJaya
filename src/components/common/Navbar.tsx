@@ -89,7 +89,7 @@ const ListItem = React.forwardRef<HTMLButtonElement, ListItemProps>(
                         ref={ref}
                         onClick={handleClick}
                         className={cn(
-                            "w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground transform hover:scale-[1.02] hover:shadow-sm",
+                            "w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground transform hover:scale-[1.02] hover:shadow-sm cursor-pointer",
                             className
                         )}
                         {...props}

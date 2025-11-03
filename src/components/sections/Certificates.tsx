@@ -4,7 +4,7 @@
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef, useState, useMemo } from "react";
 import Image from "next/image";
-import { Award, Shield, Trophy, FileText, ChevronRight, Building2 } from "lucide-react";
+import { Award, Shield, Trophy, FileText, ChevronRight, Building2, ChevronLeft } from "lucide-react";
 import { certificates, certificateCategories, Certificate } from "@/data/certificates";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
@@ -40,6 +40,7 @@ export function Certificates() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [selectedCategory, setSelectedCategory] = useState<string>("all");
     const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
     // Filter certificates based on selected category
     const filteredCertificates = useMemo(() => {
@@ -92,7 +93,7 @@ export function Certificates() {
             >
                 <button
                 onClick={() => setSelectedCategory("all")}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer ${
                     selectedCategory === "all"
                     ? "bg-primary text-primary-foreground shadow-lg scale-105"
                     : "bg-white dark:bg-slate-800 text-muted-foreground hover:bg-gray-100 dark:hover:bg-slate-700 shadow"
@@ -106,7 +107,7 @@ export function Certificates() {
                     <button
                     key={key}
                     onClick={() => setSelectedCategory(key)}
-                    className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+                    className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                         selectedCategory === key
                         ? "bg-primary text-primary-foreground shadow-lg scale-105"
                         : "bg-white dark:bg-slate-800 text-muted-foreground hover:bg-gray-100 dark:hover:bg-slate-700 shadow"
@@ -151,7 +152,7 @@ export function Certificates() {
                         src={certificate.image}
                         alt={certificate.title}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -203,49 +204,105 @@ export function Certificates() {
             </div>
         </section>
 
-        {/* Certificate Image Dialog - Full View Only */}
-        <Dialog open={!!selectedCertificate} onOpenChange={() => setSelectedCertificate(null)}>
+        {/* Certificate Image Dialog - Full View with Multi-Page Support */}
+        <Dialog 
+            open={!!selectedCertificate} 
+            onOpenChange={() => {
+                setSelectedCertificate(null);
+                setCurrentImageIndex(0);
+            }}
+        >
             <DialogContent 
             showCloseButton={false}
             className="!max-w-none !w-auto !h-auto !p-0 !border-0 !shadow-none !bg-transparent !rounded-none !gap-0"
             >
-            {selectedCertificate && (
-                <div className="relative flex items-center justify-center">
-                {/* Custom Close Button */}
-                <button
-                    onClick={() => setSelectedCertificate(null)}
-                    className="fixed top-4 right-4 z-[100] p-1 rounded-full bg-black/30 hover:bg-black/70 text-white transition-all duration-200 backdrop-blur-sm cursor-pointer"
-                    aria-label="Close"
-                >
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+            {selectedCertificate && (() => {
+                // Get all images (support both single and multiple images)
+                const allImages = selectedCertificate.images || [selectedCertificate.image];
+                const totalPages = allImages.length;
+                const hasMultiplePages = totalPages > 1;
+
+                const handlePrevImage = () => {
+                    setCurrentImageIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
+                };
+
+                const handleNextImage = () => {
+                    setCurrentImageIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
+                };
+
+                return (
+                <div className="relative flex flex-col items-center justify-center gap-4">
+                    {/* Custom Close Button */}
+                    <button
+                        onClick={() => {
+                            setSelectedCertificate(null);
+                            setCurrentImageIndex(0);
+                        }}
+                        className="fixed top-4 right-4 z-[100] p-3 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all duration-200 backdrop-blur-sm cursor-pointer"
+                        aria-label="Close"
                     >
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                
-                {/* Full Size Certificate Image - Clean, no borders, no text */}
-                <Image
-                    src={selectedCertificate.image}
-                    alt={selectedCertificate.title}
-                    width={2000}
-                    height={2000}
-                    className="max-w-[95vw] max-h-[95vh] w-auto h-auto object-contain"
-                    sizes="95vw"
-                    priority
-                    quality={100}
-                />
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        >
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+
+
+                    {/* Container untuk gambar dengan navigation buttons */}
+                    <div className="relative flex items-center justify-center">
+                        {/* Previous Button (only show if multiple pages) */}
+                        {hasMultiplePages && (
+                            <button
+                                onClick={handlePrevImage}
+                                className="absolute left-[-60px] top-1/2 -translate-y-1/2 z-[100] p-3 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all duration-200 backdrop-blur-sm cursor-pointer"
+                                aria-label="Previous page"
+                            >
+                                <ChevronLeft className="w-6 h-6" />
+                            </button>
+                        )}
+
+                        {/* Next Button (only show if multiple pages) */}
+                        {hasMultiplePages && (
+                            <button
+                                onClick={handleNextImage}
+                                className="absolute right-[-60px] top-1/2 -translate-y-1/2 z-[100] p-3 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all duration-200 backdrop-blur-sm cursor-pointer"
+                                aria-label="Next page"
+                            >
+                                <ChevronRight className="w-6 h-6" />
+                            </button>
+                        )}
+                    
+                        {/* Full Size Certificate Image - Clean, no borders, no text */}
+                        <Image
+                        src={allImages[currentImageIndex]}
+                        alt={`${selectedCertificate.title} - Halaman ${currentImageIndex + 1}`}
+                        width={2000}
+                        height={2000}
+                        className="max-w-[95vw] max-h-[85vh] w-auto h-auto object-contain"
+                        sizes="95vw"
+                        priority
+                        quality={100}
+                        />
+                    </div>
+                        {/* Page Indicator - Di atas gambar (only show if multiple pages) */}
+                        {hasMultiplePages && (
+                            <div className="px-4 py-2 rounded-full bg-black/30 text-white text-sm font-semibold backdrop-blur-sm">
+                                Halaman {currentImageIndex + 1} dari {totalPages}
+                            </div>
+                        )}
                 </div>
-            )}
+                );
+            })()}
             </DialogContent>
         </Dialog>
         </>
