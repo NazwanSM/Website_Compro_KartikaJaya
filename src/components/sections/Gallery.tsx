@@ -60,8 +60,8 @@ export function Gallery() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">
-            Galeri Kami
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4 tracking-wider">
+            GALERI KAMI
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Dokumentasi perjalanan PT Kartika Jaya Kontruksindo dalam membangun Indonesia
