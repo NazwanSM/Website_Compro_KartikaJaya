@@ -32,7 +32,7 @@ export function DirectorSpeech() {
     };
 
     return (
-        <section id="sambutan-direktur" ref={ref} className="w-full bg-slate-900 py-10 sm:py-32 overflow-hidden rounded-xl">
+        <section id="sambutan-direktur" ref={ref} className="w-full bg-slate-900 py-10 sm:py-32 overflow-hidden">
         <motion.div
             variants={containerVariants}
             initial="hidden"

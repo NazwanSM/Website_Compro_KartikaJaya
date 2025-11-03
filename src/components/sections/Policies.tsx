@@ -63,22 +63,30 @@ export function Policies() {
     };
 
     return (
-        <section id="kebijakan" ref={ref} className="w-full bg-base-white dark:bg-card py-20 sm:py-32">
-        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
-            {/* Header Seksi */}
-            <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-            >
-            <h2 className="text-xl font-semibold uppercase tracking-wider sm:text-4xl">
-                Kebijakan Perusahaan
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-base-black/60">
-                Fondasi kami dalam menjalankan setiap proyek dengan standar tertinggi.
-            </p>
-            </motion.div>
+        <section 
+            id="kebijakan" 
+            ref={ref} 
+            className="relative w-full py-20 sm:py-32 bg-cover bg-center bg-fixed overflow-hidden"
+            style={{ backgroundImage: "url('/img/base.jpg')" }}
+        >
+            {/* Overlay gradient untuk readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/80 backdrop-blur-[0px]" />
+            
+            <div className="container relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+                {/* Header Seksi */}
+                <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6 }}
+                className="text-center"
+                >
+                <h2 className="text-xl font-semibold uppercase tracking-wider sm:text-4xl text-white">
+                    Kebijakan Perusahaan
+                </h2>
+                <p className="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                    Fondasi kami dalam menjalankan setiap proyek dengan standar tertinggi.
+                </p>
+                </motion.div>
 
             {/* Grid untuk Kartu Kebijakan */}
             <motion.div
@@ -91,24 +99,26 @@ export function Policies() {
                 <motion.div
                 key={policy.title}
                 variants={itemVariants}
-                className="flex flex-col rounded-2xl bg-base-white dark:bg-slate-900 p-8 shadow-lg"
+                className="flex flex-col rounded-2xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-md p-8 shadow-2xl border border-white/20"
                 >
                 <div className="flex items-center gap-4">
-                    <policy.icon className="h-8 w-8 text-base-black" />
-                    <h3 className="text-xl font-bold text-base-black">{policy.title}</h3>
+                    <div className="p-3 rounded-xl bg-primary/10">
+                        <policy.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{policy.title}</h3>
                 </div>
                 <ul className="mt-6 space-y-4">
                     {policy.points.map((point, index) => (
                     <li key={index} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 text-base-black flex-shrink-0 mt-1" />
-                        <span className="text-sm text-base-black/60">{point}</span>
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                        <span className="text-sm text-slate-700 dark:text-slate-300">{point}</span>
                     </li>
                     ))}
                 </ul>
                 </motion.div>
             ))}
             </motion.div>
-        </div>
+            </div>
         </section>
     );
 }
