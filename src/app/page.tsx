@@ -1,6 +1,7 @@
 // src/app/page.tsx
 
 import { Navbar } from "@/components/common/Navbar";
+import { Footer } from "@/components/common/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { AboutUs } from "@/components/sections/AboutUs";
 import { DirectorSpeech } from "@/components/sections/DirectorSpeech";
@@ -8,7 +9,7 @@ import { Policies } from "@/components/sections/Policies";
 import { OrganizationalStructure } from "@/components/sections/OrganizationalStructure";
 import { InteractiveMap } from "@/components/sections/InteractiveMap";
 import { ProjectsSection } from "@/components/sections/Project";
-import { Certificates } from "@/components/sections/Certificates";
+import { Gallery } from "@/components/sections/Gallery";
 
 export default function Home() {
   return (
@@ -36,17 +37,13 @@ export default function Home() {
         <section id="proyek" className="w-full">
           <ProjectsSection />
         </section>
-        <section id="sertifikat" className="w-full">
-          <Certificates />
-        </section>
-        <section id="layanan" className="w-full">
-          <div className="container mx-auto py-20 text-center">
-            <h2 className="text-3xl font-bold">Seksi Selanjutnya</h2>
-            <p className="mt-4 text-muted-foreground">Konten akan ditambahkan di sini.</p>
-          </div>
+        <section id="galeri" className="w-full">
+          <Gallery />
         </section>
       </main>
-      {/* Footer bisa ditambahkan di sini nanti */}
+      <section id="footer" className="w-full">
+        <Footer />
+      </section>
     </>
   );
 }

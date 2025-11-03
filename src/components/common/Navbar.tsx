@@ -20,8 +20,7 @@ import {
 
 // Data untuk link utama
 const mainNavLinks = [
-    { sectionId: "home", label: "HOME" },
-    { sectionId: "layanan", label: "LAYANAN" },
+    { sectionId: "home", label: "HOME" }
 ];
 
 // Data untuk dropdown "Tentang Kami"
@@ -46,11 +45,6 @@ const aboutUsComponents: { title: string; sectionId: string; description: string
         sectionId: "struktur-organisasi",
         description: "Tim solid di balik kesuksesan setiap proyek.",
     },
-    {
-        title: "Sertifikat & Penghargaan",
-        sectionId: "sertifikat",
-        description: "Kredibilitas dan pencapaian perusahaan kami.",
-    },
 ];
 
 const projectsComponents: { title: string; sectionId: string; description: string }[] = [
@@ -63,6 +57,11 @@ const projectsComponents: { title: string; sectionId: string; description: strin
         title: "Proyek Selesai",
         sectionId: "proyek",
         description: "Galeri proyek yang telah berhasil kami selesaikan.",
+    },
+    {
+        title: "Galeri",
+        sectionId: "galeri",
+        description: "Dokumentasi perjalanan kami dalam membangun Indonesia.",
     },
 ];
 
@@ -228,7 +227,9 @@ export function Navbar() {
                     </NavigationMenuList>
                 </NavigationMenu>
                 
-                <Button>Hubungi Kami</Button>
+                <Button
+                    onClick={() => scrollToSection("footer")}
+                >Hubungi Kami</Button>
             </div>
 
             {/* Mobile Navigation Toggle */}
@@ -292,7 +293,13 @@ export function Navbar() {
                     {link.label}
                 </button>
                 ))}
-                <Button className="w-full mt-4">Hubungi Kami</Button>
+                <Button 
+                    className="w-full mt-4"
+                    onClick={() => {
+                        scrollToSection("footer");
+                        setIsOpen(false);
+                    }}
+                >Hubungi Kami</Button>
             </nav>
             </div>
         )}
