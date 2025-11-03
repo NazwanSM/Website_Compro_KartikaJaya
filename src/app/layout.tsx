@@ -33,7 +33,11 @@ export const metadata: Metadata = {
     "konstruksi Indonesia",
     "jalan tol trans sumatera",
     "konstruksi IKN",
-    "supplier material teknik"
+    "supplier material teknik",
+    "Kartika Jaya Kontruksindo",
+    "kartika jaya kontruksindo",
+    "kartika jaya",
+    "kartika"
   ],
   authors: [{ name: "PT Kartika Jaya Kontruksindo" }],
   creator: "PT Kartika Jaya Kontruksindo",
@@ -44,9 +48,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://kartikajayakontruksindo.vercel.app'), // Ganti dengan domain Vercel Anda
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: 'https://kartikajayakontruksindo.vercel.app/' },
   openGraph: {
     title: "PT Kartika Jaya Kontruksindo - Jasa Konstruksi Infrastruktur Terpercaya",
     description: "Perusahaan jasa konstruksi infrastruktur terpercaya sejak 2016. Spesialisasi dalam pembangunan jalan tol, bandara, dan proyek besar di Indonesia.",
@@ -79,11 +81,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code', // Tambahkan kode verifikasi Google Search Console
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
   },
 };
 

@@ -3,11 +3,11 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { scrollToSection, scrollToTop } from "@/lib/scroll";
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -20,72 +20,90 @@ import {
 
 // Data untuk link utama
 const mainNavLinks = [
-    { href: "/", label: "HOME" },
-    { href: "/#layanan", label: "LAYANAN" },
+    { sectionId: "home", label: "HOME" },
+    { sectionId: "layanan", label: "LAYANAN" },
 ];
 
 // Data untuk dropdown "Tentang Kami"
-const aboutUsComponents: { title: string; href: string; description: string }[] = [
+const aboutUsComponents: { title: string; sectionId: string; description: string }[] = [
     {
         title: "Sejarah Perusahaan",
-        href: "/#tentang-kami",
+        sectionId: "tentang-kami",
         description: "Perjalanan kami sejak 2016 dalam industri konstruksi.",
     },
     {
         title: "Sambutan Direktur",
-        href: "/#sambutan-direktur",
+        sectionId: "sambutan-direktur",
         description: "Pesan dan komitmen dari pimpinan kami.",
     },
     {
         title: "Kebijakan Perusahaan",
-        href: "/#kebijakan",
+        sectionId: "kebijakan",
         description: "Fondasi kami dalam menjaga mutu, K3, dan lingkungan.",
     },
     {
         title: "Struktur Organisasi",
-        href: "/#struktur-organisasi",
+        sectionId: "struktur-organisasi",
         description: "Tim solid di balik kesuksesan setiap proyek.",
+    },
+    {
+        title: "Sertifikat & Penghargaan",
+        sectionId: "sertifikat",
+        description: "Kredibilitas dan pencapaian perusahaan kami.",
     },
 ];
 
-const projectsComponents: { title: string; href: string; description: string }[] = [
+const projectsComponents: { title: string; sectionId: string; description: string }[] = [
     {
         title: "Wilayah Kerja",
-        href: "/#wilayah-kerja",
+        sectionId: "wilayah-kerja",
         description: "Peta interaktif yang menunjukkan lokasi proyek kami.",
     },
     {
         title: "Proyek Selesai",
-        href: "/#proyek",
+        sectionId: "proyek",
         description: "Galeri proyek yang telah berhasil kami selesaikan.",
     },
 ];
 
 // Komponen helper untuk item di dalam dropdown
-const ListItem = React.forwardRef<
-    React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
-    >(({ className, title, children, ...props }, ref) => {
-    return (
-        <li>
-        <NavigationMenuLink asChild>
-            <a
-            ref={ref}
-            className={cn(
-                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground transform hover:scale-[1.02] hover:shadow-sm",
-                className
-            )}
-            {...props}
-            >
-            <div className="text-sm font-medium leading-none transition-colors duration-200">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground transition-colors duration-200">
-                {children}
-            </p>
-            </a>
-        </NavigationMenuLink>
-        </li>
-    );
-});
+interface ListItemProps {
+    className?: string;
+    title: string;
+    children: React.ReactNode;
+    sectionId: string;
+    onNavigate?: () => void;
+}
+
+const ListItem = React.forwardRef<HTMLButtonElement, ListItemProps>(
+    ({ className, title, children, sectionId, onNavigate, ...props }, ref) => {
+        const handleClick = () => {
+            scrollToSection(sectionId);
+            onNavigate?.();
+        };
+
+        return (
+            <li>
+                <NavigationMenuLink asChild>
+                    <button
+                        ref={ref}
+                        onClick={handleClick}
+                        className={cn(
+                            "w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground transform hover:scale-[1.02] hover:shadow-sm",
+                            className
+                        )}
+                        {...props}
+                    >
+                        <div className="text-sm font-medium leading-none transition-colors duration-200">{title}</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground transition-colors duration-200">
+                            {children}
+                        </p>
+                    </button>
+                </NavigationMenuLink>
+            </li>
+        );
+    }
+);
 ListItem.displayName = "ListItem";
 
 export function Navbar() {
@@ -123,7 +141,7 @@ export function Navbar() {
                 : "rounded-none bg-transparent px-4 sm:px-6 lg:px-8"
             )}
             >
-            <Link href="/" className="flex items-center gap-2">
+            <button onClick={scrollToTop} className="flex items-center gap-2 cursor-pointer">
                 <Image 
                 src="/icon/kartika-jaya.png" 
                 alt="Logo KJK" 
@@ -133,7 +151,7 @@ export function Navbar() {
                 <span className={cn("font-semibold text-md transition-colors duration-300", scrolled ? "text-foreground" : "text-white")}>
                 KARTIKA JAYA KONTRUKSINDO
                 </span>
-            </Link>
+            </button>
 
             {/* Right side container for navigation and button */}
             <div className="hidden md:flex items-center gap-6">
@@ -142,11 +160,16 @@ export function Navbar() {
                     <NavigationMenuList>
                     {/* Link Beranda */}
                     <NavigationMenuItem>
-                        <Link href="/" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent transition-all duration-200 ease-in-out", scrolled ? "text-muted-foreground hover:text-primary hover:bg-accent/50" : "text-white hover:bg-white/10 hover:text-white hover:scale-105")}>
-                            HOME
+                        <NavigationMenuLink 
+                            asChild
+                        >
+                            <button
+                                onClick={scrollToTop}
+                                className={cn(navigationMenuTriggerStyle(), "bg-transparent transition-all duration-200 ease-in-out cursor-pointer", scrolled ? "text-muted-foreground hover:text-primary hover:bg-accent/50" : "text-white hover:bg-white/10 hover:text-white hover:scale-105")}
+                            >
+                                HOME
+                            </button>
                         </NavigationMenuLink>
-                        </Link>
                     </NavigationMenuItem>
 
                     {/* Dropdown Tentang Kami */}
@@ -160,7 +183,7 @@ export function Navbar() {
                             <ListItem
                                 key={component.title}
                                 title={component.title}
-                                href={component.href}
+                                sectionId={component.sectionId}
                             >
                                 {component.description}
                             </ListItem>
@@ -180,7 +203,7 @@ export function Navbar() {
                             <ListItem
                                 key={component.title}
                                 title={component.title}
-                                href={component.href}
+                                sectionId={component.sectionId}
                             >
                                 {component.description}
                             </ListItem>
@@ -190,13 +213,16 @@ export function Navbar() {
                     </NavigationMenuItem>
 
                     {/* Sisa Link Utama */}
-                    {mainNavLinks.slice(1).map((link) => ( // slice(1) untuk skip "Beranda"
-                        <NavigationMenuItem key={link.href}>
-                        <Link href={link.href} legacyBehavior passHref>
-                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent transition-all duration-200 ease-in-out", scrolled ? "text-muted-foreground hover:text-primary hover:bg-accent/50" : "text-white hover:bg-white/10 hover:text-white hover:scale-105")}>
-                            {link.label}
-                            </NavigationMenuLink>
-                        </Link>
+                    {mainNavLinks.slice(1).map((link) => ( // slice(1) untuk skip "HOME"
+                        <NavigationMenuItem key={link.sectionId}>
+                        <NavigationMenuLink asChild>
+                            <button
+                                onClick={() => scrollToSection(link.sectionId)}
+                                className={cn(navigationMenuTriggerStyle(), "bg-transparent transition-all duration-200 ease-in-out cursor-pointer", scrolled ? "text-muted-foreground hover:text-primary hover:bg-accent/50" : "text-white hover:bg-white/10 hover:text-white hover:scale-105")}
+                            >
+                                {link.label}
+                            </button>
+                        </NavigationMenuLink>
                         </NavigationMenuItem>
                     ))}
                     </NavigationMenuList>
@@ -218,14 +244,53 @@ export function Navbar() {
         {isOpen && (
             <div className="md:hidden bg-background border-t border-border mt-0.5">
             <nav className="flex flex-col items-center gap-2 p-4">
-                <Link href="/" className="font-bold text-lg py-2" onClick={() => setIsOpen(false)}>Beranda</Link>
+                <button 
+                    onClick={() => {
+                        scrollToTop();
+                        setIsOpen(false);
+                    }} 
+                    className="font-bold text-lg py-2 cursor-pointer hover:text-primary transition-colors"
+                >
+                    Beranda
+                </button>
                 <p className="font-semibold text-muted-foreground text-sm pt-2">Tentang Kami</p>
                 {aboutUsComponents.map((link) => (
-                <Link key={link.href} href={link.href} className="text-base text-foreground hover:text-primary w-full text-center py-2" onClick={() => setIsOpen(false)}>{link.title}</Link>
+                <button 
+                    key={link.sectionId} 
+                    onClick={() => {
+                        scrollToSection(link.sectionId);
+                        setIsOpen(false);
+                    }}
+                    className="text-base text-foreground hover:text-primary w-full text-center py-2 cursor-pointer transition-colors"
+                >
+                    {link.title}
+                </button>
+                ))}
+                <p className="font-semibold text-muted-foreground text-sm pt-2">Proyek</p>
+                {projectsComponents.map((link) => (
+                <button 
+                    key={link.sectionId} 
+                    onClick={() => {
+                        scrollToSection(link.sectionId);
+                        setIsOpen(false);
+                    }}
+                    className="text-base text-foreground hover:text-primary w-full text-center py-2 cursor-pointer transition-colors"
+                >
+                    {link.title}
+                </button>
                 ))}
                 <p className="font-semibold text-muted-foreground text-sm pt-2">Lainnya</p>
                 {mainNavLinks.slice(1).map((link) => (
-                <Link key={link.href} href={link.href} className="text-base text-foreground hover:text-primary w-full text-center py-2" onClick={() => setIsOpen(false)}>{link.label}</Link>
+                <button 
+                    key={link.sectionId} 
+                    onClick={() => {
+                        scrollToSection(link.sectionId);
+                        setIsOpen(false);
+                    }}
+                    className="text-base text-foreground hover:text-primary w-full text-center py-2 cursor-pointer transition-colors"
+                >
+                    {link.label}
+                </button>
                 ))}
                 <Button className="w-full mt-4">Hubungi Kami</Button>
             </nav>

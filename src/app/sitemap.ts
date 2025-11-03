@@ -4,48 +4,15 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://kartikajayakontruksindo.vercel.app'
 
+    // Karena website menggunakan single page application dengan smooth scroll navigation,
+    // sitemap hanya mencantumkan URL utama. Semua section (tentang-kami, sambutan-direktur, dll)
+    // ada di halaman yang sama dan dapat diakses melalui smooth scroll.
     return [
         {
-        url: baseUrl,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 1,
-        },
-        {
-        url: `${baseUrl}/#tentang-kami`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.9,
-        },
-        {
-        url: `${baseUrl}/#sambutan-direktur`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-        },
-        {
-        url: `${baseUrl}/#kebijakan`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-        },
-        {
-        url: `${baseUrl}/#struktur-organisasi`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.7,
-        },
-        {
-        url: `${baseUrl}/#wilayah-kerja`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.9,
-        },
-        {
-        url: `${baseUrl}/#layanan`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
+            url: baseUrl,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 1,
         },
     ]
 }
