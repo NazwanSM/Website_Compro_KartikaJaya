@@ -9,10 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ada di halaman yang sama dan dapat diakses melalui smooth scroll.
     return [
         {
-            url: baseUrl,
-            lastModified: new Date(),
+            url: `${baseUrl}/`,
+            lastModified: new Date().toISOString(),
             changeFrequency: 'weekly',
-            priority: 1,
+            priority: 1.0,
         },
     ]
 }
