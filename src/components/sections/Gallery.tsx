@@ -60,10 +60,10 @@ export function Gallery() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4 tracking-wider">
+          <h2 className="text-xl sm:text-4xl font-semibold mb-4 tracking-wider">
             GALERI KAMI
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
             Dokumentasi perjalanan PT Kartika Jaya Kontruksindo dalam membangun Indonesia
           </p>
         </motion.div>
@@ -124,10 +124,6 @@ export function Gallery() {
           ))}
         </motion.div>
       </div>
-
-      {/* Gradient Overlays untuk Fade Effect */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
     </section>
   );
 }

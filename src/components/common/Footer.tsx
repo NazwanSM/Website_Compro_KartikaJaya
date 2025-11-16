@@ -30,7 +30,7 @@ export function Footer() {
                     height={48} 
                 />
                 <div>
-                    <h3 className="font-bold text-lg">PT Kartika Jaya</h3>
+                    <h3 className="font-bold text-lg">PT Kartika Jaya Kontruksindo</h3>
                     <p className="text-sm text-slate-400">Kontruksindo</p>
                 </div>
                 </div>

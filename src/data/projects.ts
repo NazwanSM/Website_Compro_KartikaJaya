@@ -92,7 +92,7 @@ export const unifiedProjectData = [
         year: "2024-2025",
         description: "Berbagai pekerjaan konstruksi mulai dari lansekap, drainase, hingga pekerjaan struktur jembatan overpass.",
         scope: ["Pekerjaan Solid Sodding", "Pekerjaan DS-8", "Setting dan Pengecoran RCP", "Pekerjaan LC Rigid", "Pekerjaan Saluran V-Ditch", "Pekerjaan Bokong Semar Jembatan Overpass"],
-        image: "/img/Proyek8.JPG",
+        image: "/img/Proyek8 - Copy.jpg",
         position: { top: '48%', left: '17%' }, 
     },
     {

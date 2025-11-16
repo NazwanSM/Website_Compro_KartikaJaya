@@ -83,7 +83,7 @@ export function Policies() {
                 <h2 className="text-xl font-semibold uppercase tracking-wider sm:text-4xl text-white">
                     Kebijakan Perusahaan
                 </h2>
-                <p className="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-300">
                     Fondasi kami dalam menjalankan setiap proyek dengan standar tertinggi.
                 </p>
                 </motion.div>

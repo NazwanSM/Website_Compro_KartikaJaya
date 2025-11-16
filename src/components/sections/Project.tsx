@@ -73,10 +73,10 @@ export const ProjectsSection = () => {
             <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
             <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
                 <div className="flex flex-col gap-4">
-                <h2 className="text-3xl font-semibold md:text-4xl lg:text-5xl">
+                <h2 className="text-xl font-semibold sm:text-4xl">
                     PENGALAMAN PROYEK KAMI
                 </h2>
-                <p className="max-w-lg text-base-white/80">
+                <p className="max-w-lg text-base-white/80 text-sm sm:text-base">
                     Jelajahi beberapa proyek strategis yang telah kami kerjakan di seluruh Indonesia.
                 </p>
                 </div>

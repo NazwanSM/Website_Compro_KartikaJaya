@@ -40,10 +40,10 @@ export function InteractiveMap() {
         >
             {/* Header Seksi */}
             <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-3xl font-semibold uppercase tracking-wider sm:text-5xl">
+            <h2 className="text-xl font-semibold uppercase tracking-wider sm:text-4xl">
                 Jelajahi Proyek Kami
             </h2>
-            <p className="mt-4 max-w-3xl mx-auto text-lg text-base-black/70">
+            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base text-base-black/70">
                 Klik pada titik lokasi untuk melihat detail proyek yang telah kami kerjakan di seluruh nusantara.
             </p>
             </motion.div>
