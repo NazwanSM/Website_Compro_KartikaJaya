@@ -13,7 +13,7 @@ const galleryImages = {
     { src: "/gallery/3.jpg", alt: "Proyek Konstruksi 3" },
     { src: "/gallery/4.jpg", alt: "Proyek Konstruksi 4" },
     { src: "/gallery/5.jpg", alt: "Proyek Konstruksi 5" },
-    { src: "/gallery/6.jpg", alt: "Proyek Konstruksi 6" },
+    { src: "/gallery/6.JPG", alt: "Proyek Konstruksi 6" },
   ],
   row2: [
     { src: "/gallery/7.jpg", alt: "Proyek Konstruksi 7" },

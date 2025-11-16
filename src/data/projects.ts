@@ -68,7 +68,7 @@ export const unifiedProjectData = [
         year: "2022-2024",
         description: "Pengadaan dan pemasangan sistem drainase untuk mendukung infrastruktur jalan tol.",
         scope: ["Pengadaan dan Pemasangan Drainase"],
-        image: "/img/Proyek6.JPG",
+        image: "/img/Proyek6.jpg",
         position: { top: '29%', left: '9%' }, 
     },
     {
