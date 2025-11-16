@@ -20,7 +20,7 @@ export const unifiedProjectData = [
         year: "2018 - 2020",
         description: "Pembangunan infrastruktur pendukung jalan tol, termasuk precast beton, median barrier, dan drainase.",
         scope: ["Lansekap", "Precast Beton", "Pengecoran Median Concrete Barier In-situ", "Setting Median Barier Percast", "Drainase DS-3", "Pemasangan Guardrail"],
-        image: "/img/Proyek2.jpeg",
+        image: "/img/Proyek2.jpg",
         position: { top: '61%', left: '21.5%' },
     },
     {
@@ -32,7 +32,7 @@ export const unifiedProjectData = [
         year: "2019",
         description: "Pekerjaan lansekap dan pembangunan saluran air untuk mendukung operasional bandara baru.",
         scope: ["Penanaman Gebalan Rumput", "Pekerjaan Saluran Terbuka"],
-        image: "/img/Proyek3.jpeg",
+        image: "/img/Proyek3.JPG",
         position: { top: '71%', left: '32%' },
     },
     {
@@ -44,7 +44,7 @@ export const unifiedProjectData = [
         year: "2021-2023",
         description: "Pekerjaan konstruksi pagar, lansekap sodding, dan sistem drainase jalan tol.",
         scope: ["Pekerjaan Pagar Rumija Type 2 (Kawat Berduri)", "Pekerjaan Strip dan Solid Sodding", "Pekerjaan Saluran Drainase"],
-        image: "/img/Proyek4.jpeg",
+        image: "/img/Proyek4.JPG",
         position: { top: '53%', left: '20%' }, 
     },
     {
@@ -68,7 +68,7 @@ export const unifiedProjectData = [
         year: "2022-2024",
         description: "Pengadaan dan pemasangan sistem drainase untuk mendukung infrastruktur jalan tol.",
         scope: ["Pengadaan dan Pemasangan Drainase"],
-        image: "/img/Proyek6.jpeg",
+        image: "/img/Proyek6.JPG",
         position: { top: '29%', left: '9%' }, 
     },
     {
@@ -80,7 +80,7 @@ export const unifiedProjectData = [
         year: "2024",
         description: "Pekerjaan pembangunan berbagai jenis saluran drainase untuk jalan tol.",
         scope: ["Pekerjaan Saluran Drainase", "Pekerjaan Saluran DS-3"],
-        image: "/img/Proyek7.jpeg",
+        image: "/img/Proyek7.jpg",
         position: { top: '50%', left: '18%' }, 
     },
     {
@@ -92,7 +92,7 @@ export const unifiedProjectData = [
         year: "2024-2025",
         description: "Berbagai pekerjaan konstruksi mulai dari lansekap, drainase, hingga pekerjaan struktur jembatan overpass.",
         scope: ["Pekerjaan Solid Sodding", "Pekerjaan DS-8", "Setting dan Pengecoran RCP", "Pekerjaan LC Rigid", "Pekerjaan Saluran V-Ditch", "Pekerjaan Bokong Semar Jembatan Overpass"],
-        image: "/img/Proyek8.jpg",
+        image: "/img/Proyek8.JPG",
         position: { top: '48%', left: '17%' }, 
     },
     {
@@ -128,7 +128,7 @@ export const unifiedProjectData = [
         year: "2024-2025",
         description: "Pembangunan struktur utama untuk area residensial di IKN, termasuk MUT dan jalan.",
         scope: ["Pekerjaan Box Multi Utility Tunnel (MUT)", "Pekerjaan Box Crossing", "Pekerjaan Rigid", "Pekerjaan Caping Beam"],
-        image: "/img/Proyek12.jpeg",
+        image: "/img/Proyek12.jpg",
         position: { top: '44%', left: '46%' }, 
     },
     {
@@ -152,7 +152,7 @@ export const unifiedProjectData = [
         year: "2024",
         description: "Pembangunan sistem drainase dan pagar Right of Way (ROW) untuk jalan tol.",
         scope: ["Pekerjaan Saluran Drainase", "Pekerjaan Pagar ROW"],
-        image: "/img/Proyek14.jpeg",
+        image: "/img/Proyek14.JPG",
         position: { top: '27%', left: '7.7%' }, 
     },
     {
@@ -164,7 +164,7 @@ export const unifiedProjectData = [
         year: "2025",
         description: "Pekerjaan pelebaran jalan tol yang mencakup pengecoran, pemasangan saluran, dan guardrail.",
         scope: ["Pekerjaan Struktur Box Culvert", "Pengecoran LC dan Setting Saluran U-Ditch Pre-Cast", "Pengecoran LC Rigid", "Pengecoran Rigid", "Pekerjaan Pemasangan Guardrail"],
-        image: "/img/Proyek15.jpeg", 
+        image: "/img/Proyek15.JPG", 
         position: { top: '63.5%', left: '23.4%' }, 
     },
     {

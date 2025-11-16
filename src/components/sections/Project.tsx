@@ -67,14 +67,14 @@ export const ProjectsSection = () => {
         <>
         <section 
         id="proyek" 
-        className="relative py-20 sm:py-32 text-white w-full max-w-350 bg-cover bg-center bg-fixed rounded-2xl overflow-hidden"
+        className="relative py-20 sm:py-32 text-white w-full bg-cover bg-center bg-fixed overflow-hidden"
         style={{ backgroundImage: "url('/img/project-background.png')" }}
         >
-            <div className="container mx-auto px-4 lg:px-8">
+            <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
             <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
                 <div className="flex flex-col gap-4">
-                <h2 className="text-3xl font-extrabold md:text-4xl lg:text-5xl">
-                    Pengalaman Proyek Kami
+                <h2 className="text-3xl font-semibold md:text-4xl lg:text-5xl">
+                    PENGALAMAN PROYEK KAMI
                 </h2>
                 <p className="max-w-lg text-base-white/80">
                     Jelajahi beberapa proyek strategis yang telah kami kerjakan di seluruh Indonesia.
